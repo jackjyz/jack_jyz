@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content=""/>
+    <title></title>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!--引入公共头部-->
+<div th:insert="top :: topFragment"></div>
+
+<div id="content" class="wrap">
+    <div class="success">
+        <div class="information">
+            <p>恭喜：购买成功！</p>
+            <p><a th:href="@{/itemslist}">点此查看订单详情&gt;&gt;</a></p>
+        </div>
+    </div>
+</div>
+<div id="footer" class="wrap">
+    网上书城 &copy; 版权所有
+</div>
+</body>
+</html>

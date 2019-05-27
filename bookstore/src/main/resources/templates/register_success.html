@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content=""/>
+    <title></title>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="header" class="wrap">
+    <div id="logo">网上书城</div>
+    <div id="navbar">
+        <!--引入公共搜索栏-->
+        <div th:insert="~{top :: searchTopFragment}"></div>
+    </div>
+</div>
+<div id="register">
+    <div class="title">
+        <h2>欢迎注册网上书城</h2>
+    </div>
+    <div class="steps">
+        <ul class="clearfix">
+            <li class="past">1.填写注册信息</li>
+            <li class="last">2.注册成功</li>
+        </ul>
+    </div>
+    <div class="success">
+        <div class="information">
+            <p>恭喜：注册成功！</p>
+            <p><a th:href="@{/index}">点此进入用户中心&gt;&gt;</a></p>
+        </div>
+    </div>
+</div>
+<div id="footer" class="wrap">
+    网上书城 &copy; 版权所有
+</div>
+</body>
+</html>

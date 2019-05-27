@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content=""/>
+    <title></title>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!--引入公共头部-->
+<div th:insert="top :: topFragment(activeUri='shopping.html')"></div>
+
+
+<div id="content" class="wrap">
+    <div class="list bookList">
+        <form method="post" name="shoping" th:action="@{/shopping-success}">
+            <table>
+                <tr class="title">
+                    <th class="view">图片预览</th>
+                    <th>书名</th>
+                    <th class="nums">数量</th>
+                    <th class="price">价格</th>
+                    <th>操作</th>
+                </tr>
+                <tr th:each="order:${orderList}">
+                    <input hidden type="checkbox" name="bIds" th:value="${order.bId}" checked/>
+                    <td class="thumb"><img th:src="${order.getImage()}"/></td>
+                    <td class="title">[[${order.bookName}]]</td>
+                    <td><input class="input-text" type="text" disabled name="nums" th:value="${order.num}"/></td>
+                    <td>￥<span>[[${order.bPrice}]]</span></td>
+                    <td><a th:href="@{deleteOrders(bId=${order.bId})}">移出购物车</a></td>
+                </tr>
+            </table>
+            <div class="button">
+                <h4>总价：￥<span>[[${totalPrice}]]</span>元</h4>
+                <input class="input-chart" type="submit" name="submit" value=""/>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="footer" class="wrap">
+    网上书城 &copy; 版权所有
+</div>
+</body>
+</html>

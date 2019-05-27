@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="" />
+	<title></title>
+	<link  href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<!--引入公共头部-->
+<div th:insert="top :: topFragment(activeUri='itemslist.html')" ></div>
+
+<div id="content" class="wrap">
+	<div class="list orderList">
+			<table>
+				<tr class="title">
+					<th class="orderId">订单编号</th>
+					<th>订单商品</th>
+					<th class="userName">收货人</th>
+					<th class="price">订单金额</th>
+					<th class="createTime">下单时间</th>
+					<th class="status">订单状态</th>
+				</tr>
+				<tr th:each="itemsVo:${itemsVoList}">
+					<td class="thumb">[[${itemsVo.iId}]]</td>
+					<td><img th:src="${itemsVo.image}"></td>
+					<td>[[${itemsVo.bookName}]]</td>
+					<td>[[${itemsVo.price}]]</td>
+					<td>[[${itemsVo.createDate}]]</td>
+					<td th:if="${itemsVo.state } eq 0"><span>已完成</span></td>
+					<td th:if="${itemsVo.state } eq 1"><span>未完成</span></td>
+				</tr>
+			</table>
+		<!--这里是分页-->
+        <div th:replace="paging ::paging(pages=${itemsVoList},page='itemslist')"> </div>
+			<!--<div class="button"><input class="input-gray" type="submit" name="submit" value="查看一个月前的订单" /><input class="input-gray" type="submit" name="submit" value="查看一个月前的订单" /></div>-->
+	</div>
+</div>
+<div id="footer" class="wrap">
+	网上书城 &copy; 版权所有</div>
+</body>
+</html>

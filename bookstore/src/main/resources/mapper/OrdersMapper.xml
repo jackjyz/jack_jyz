@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzti.bookstore.mapper.OrdersMapper">
+    <resultMap id="orderVo" type="com.zzti.bookstore.pojo.OrderVo">
+
+        <result property="bId" column="b_ID"/>
+        <result property="username" column="USERNAME"/>
+        <result property="num" column="num"/>
+        <result property="bookName" column="BOOK_NAME"/>
+        <result property="bPrice" column="B_PRICE"/>
+        <result property="image" column="IMAGE"/>
+        <result property="stock" column="STOCK"/>
+    </resultMap>
+
+    <select id="selectShopppingOrders" parameterType="string"
+            resultType="orderVo" resultMap="orderVo">
+SELECT
+  o.`b_ID`,
+  o.`USERNAME`,
+  o.`num`,
+  b.`BOOK_NAME`,
+  b.`B_PRICE`,
+  b.`IMAGE`,
+  b.`STOCK`
+FROM
+  `orders` o LEFT JOIN `books` b ON o.`B_ID` = b.`B_ID` WHERE o.`USERNAME`= #{username}
+
+	</select>
+
+</mapper>

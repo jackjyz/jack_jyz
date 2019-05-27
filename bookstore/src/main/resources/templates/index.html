@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content=""/>
+    <title></title>
+    <link th:href="@{css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{webjars/layui/2.4.5/css/layui.css}">
+    <link rel="stylesheet" th:href="@{webjars/layui/2.4.5/layui.all.js}">
+    <script th:href="@{webjars/jquery/3.3.1-2/jquery.min.js}"></script>
+    <script th:href="@{jquery/paging.js}"></script>
+</head>
+<body>
+<div th:replace="top :: topFragment(activeUri='index.html')"></div>
+
+<div id="content" class="wrap">
+    <div class="list bookList">
+        <form method="post" name="shoping" th:action="@{/addToShopping}">
+            <table>
+                <tr class="title">
+                    <th class="checker"></th>
+                    <th>书名</th>
+                    <th class="price">价格</th>
+                    <th class="store">库存</th>
+                    <th class="view">图片预览</th>
+                </tr>
+                <tr th:each="book:${bookslist}">
+                    <td><input type="checkbox" name="bId" th:value="${book.bId}" th:text="${book.bId}"/></td>
+                    <td class="title">[[${book.bookName}]]</td>
+                    <td>[[${book.bPrice}]]</td>
+                    <td>[[${book.stock}]]</td>
+                    <td class="thumb"><img th:src="${book.image}"/></td>
+                </tr>
+            </table>
+            <!--这里是分页栏-->
+            <div th:replace="paging ::paging(pages=${bookslist},page='index')"> </div>
+           <!-- -->
+            <div class="button"><input class="input-btn" type="submit" name="submit" value=""/></div>
+        </form>
+    </div>
+</div>
+<div id="footer" class="wrap">
+    网上书城 &copy; 版权所有
+</div>
+</body>
+</html>

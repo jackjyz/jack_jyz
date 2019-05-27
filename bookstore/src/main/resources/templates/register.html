@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content=""/>
+    <title></title>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="header" class="wrap">
+    <div id="logo">网上书城</div>
+    <div id="navbar">
+        <!--引入公共搜索栏-->
+        <div th:insert="~{top :: searchTopFragment}"></div>
+    </div>
+</div>
+<div id="register">
+    <div class="title">
+        <h2>欢迎注册网上书城</h2>
+    </div>
+    <div class="steps">
+        <ul class="clearfix">
+            <li class="current">1.填写注册信息</li>
+            <li class="unpass">2.注册成功</li>
+        </ul>
+    </div>
+    <form method="post" th:action="@{/toRegister}">
+        <dl>
+            <dt>用 户 名：</dt>
+            <dd><input class="input-text" type="text" name="username"/><span>[[${msg}]]</span></dd>
+            <dt>密　　码：</dt>
+            <dd><input class="input-text" type="password" name="password"/><span></span></dd>
+            <dt>确认密码：</dt>
+            <dd><input class="input-text" type="password" name="rePassword"/><span></span></dd>
+            <dt>Email地址：</dt>
+            <dd><input class="input-text" type="text" name="email"/><span></span></dd>
+            <dt></dt>
+            <dd class="button"><input class="input-reg" type="submit" name="register" value=""/></dd>
+        </dl>
+    </form>
+</div>
+<div id="footer" class="wrap">
+    网上书城 &copy; 版权所有
+</div>
+</body>
+</html>

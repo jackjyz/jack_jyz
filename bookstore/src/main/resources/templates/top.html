@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div id="searchTop" th:fragment="searchTopFragment">
+    <form name="search" th:action="@{/search}">
+        搜索：<input class="input-text" type="text" name="keywords"/><input class="input-btn" type="submit" name="submit"/>
+    </form>
+</div>
+
+<!--部分的页面头文件-->
+<div id="top" th:fragment="topFragment">
+    <div id="header" class="wrap">
+        <div id="logo">网上书城</div>
+        <div id="navbar">
+            <div class="userMenu">
+                <ul>
+                    <li th:class="${activeUri == 'index.html'?'current':'active'}"> <a th:href="@{/index}">User首页</a> </li>
+                    <li th:class="${activeUri=='itemslist.html'?'current':''}"> <a th:href="@{/itemslist}">我的订单</a> </li>
+                    <li th:class="${activeUri=='shopping.html'?'current':''}"> <a th:href="@{/shopping}">购物车</a> </li>
+                    <li th:class="${activeUri=='logout.html'?'current':''}"> <a th:href="@{/logout}">注销</a> </li>
+                </ul>
+            </div>
+            <!--引入公共搜索栏-->
+            <div th:insert="~{top :: searchTopFragment}"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

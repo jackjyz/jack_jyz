@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content=""/>
+    <title></title>
+    <link th:href="@{css/style.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{webjars/layui/2.4.5/css/layui.css}">
+    <link rel="stylesheet" th:href="@{webjars/layui/2.4.5/layui.all.js}">
+    <script th:href="@{webjars/jquery/3.3.1-2/jquery.min.js}"></script>
+</head>
+<div>
+    <div th:fragment="paging (pages)">
+        <div class="page-spliter">
+            <a href="#">&lt;</a>
+            <a th:href="@{${page}(pageNum=1)}">首页</a>
+            <span th:if="${pages.getPageNum() eq 1} ">
+                    <span class="current"><a th:href="@{${page}(pageNum=1)}">1</a></span>
+                    <span th:if="${pages.getPages() gt 1}"> <a th:href="@{${page}(pageNum=2)}">2</a></span>
+                    <span th:if="${pages.getPages() gt 2}">  <a th:href="@{${page}(pageNum=3)}">3</a></span>
+                    <span th:if="${pages.getPages() gt 3}"> <a th:href="@{${page}(pageNum=4)}">4</a></span>
+                    <span th:if="${pages.getPages() gt 4}"> <a th:href="@{${page}(pageNum=5)}">5</a></span>
+            </span>
+            <span th:if="${pages.getPageNum() eq 2}">
+                    <a th:href="@{${page}(pageNum=1)}">1</a>
+                    <span class="current"><a th:href="@{${page}(pageNum=2)}">2</a></span>
+                     <span th:if="${pages.getPages() gt 2}"><a th:href="@{${page}(pageNum=3)}">3</a></span>
+                     <span th:if="${pages.getPages() gt 3}"><a th:href="@{${page}(pageNum=4)}">4</a></span>
+                     <span th:if="${pages.getPages() gt 4}"><a th:href="@{${page}(pageNum=5)}">5</a></span>
+                </span>
+            <span th:if="${pages.getPageNum() gt 2 and (pages.getPageNum() le (pages.getPages()-2))}">
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()-2})}">[[${pages.getPageNum()}-2]]</a>
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()}-1)}">[[${pages.getPageNum()}-1]]</a>
+                    <span class="current"><a th:href="@{${page}(pageNum=${pages.getPageNum()})}">[[${pages.getPageNum()}]]</a></span>
+                    <span th:if="${pages.getPages() gt 3}"><a th:href="@{${page}(pageNum=${pages.getPageNum()}+1)}">[[${pages.getPageNum()}+1]]</a></span>
+                    <span th:if="${pages.getPages() gt 4}"><a th:href="@{${page}(pageNum=${pages.getPageNum()}+2)}">[[${pages.getPageNum()}+2]]</a></span>
+                </span>
+            <span th:if="${(pages.getPageNum() eq (pages.getPages())-1) and pages.getPages() ge 4}">
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()-3})}">[[${pages.getPageNum()}-3]]</a>
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()}-2)}">[[${pages.getPageNum()}-2]]</a>
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()}-1)}">[[${pages.getPageNum()}-1]]</a>
+                    <span class="current"><a th:href="@{${page}(pageNum=${pages.getPageNum()})}">[[${pages.getPageNum()}]]</a></span>
+                    <span th:if="${pages.getPages() gt 4}"><a th:href="@{${page}(pageNum=${pages.getPageNum()}+1)}">[[${pages.getPageNum()}+1]]</a></span>
+                </span>
+            <span th:if="${(pages.getPageNum() eq pages.getPages()) and pages.getPages() ge 5}">
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()}-4)}">[[${pages.getPageNum()}-4]]</a>
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()-3})}">[[${pages.getPageNum()}-3]]</a>
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()}-2)}">[[${pages.getPageNum()}-2]]</a>
+                    <a th:href="@{${page}(pageNum=${pages.getPageNum()}-1)}">[[${pages.getPageNum()}-1]]</a>
+                    <span class="current"><a th:href="@{${page}(pageNum=${pages.getPageNum()})}">[[${pages.getPageNum()}]]</a></span>
+                </span>
+            <a th:href="@{${page}(pageNum = ${pages.getPages()})}">尾页</a>
+            <a href="#">&gt;</a>
+        </div>
+    </div>
+   <!-- <div th:fragment="paging (bookslist)">
+        <div class="page-spliter">
+            <a href="#">&lt;</a>
+            <a th:href="@{/index(pageNum=1)}">首页</a>
+            <span th:if="${bookslist.getPageNum() eq 1} ">
+                    <span class="current"><a th:href="@{/index(pageNum=1)}">1</a></span>
+                    <span th:if="${bookslist.getPages() gt 1}"> <a th:href="@{/index(pageNum=2)}">2</a></span>
+                    <span th:if="${bookslist.getPages() gt 2}">  <a th:href="@{/index(pageNum=3)}">3</a></span>
+                    <span th:if="${bookslist.getPages() gt 3}"> <a th:href="@{/index(pageNum=4)}">4</a></span>
+                    <span th:if="${bookslist.getPages() gt 4}"> <a th:href="@{/index(pageNum=5)}">5</a></span>
+            </span>
+            <span th:if="${bookslist.getPageNum() eq 2}">
+                    <a th:href="@{/index(pageNum=1)}">1</a>
+                    <span class="current"><a th:href="@{/index(pageNum=2)}">2</a></span>
+                     <span th:if="${bookslist.getPages() gt 2}"><a th:href="@{/index(pageNum=3)}">3</a></span>
+                     <span th:if="${bookslist.getPages() gt 3}"><a th:href="@{/index(pageNum=4)}">4</a></span>
+                     <span th:if="${bookslist.getPages() gt 4}"><a th:href="@{/index(pageNum=5)}">5</a></span>
+                </span>
+            <span th:if="${bookslist.getPageNum() gt 2 and (bookslist.getPageNum() le (bookslist.getPages()-1))}">
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()-2})}">[[${bookslist.getPageNum()}-2]]</a>
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()}-1)}">[[${bookslist.getPageNum()}-1]]</a>
+                    <span class="current"><a th:href="@{/index(pageNum=${bookslist.getPageNum()})}">[[${bookslist.getPageNum()}]]</a></span>
+                    <span th:if="${bookslist.getPages() gt 3}"><a th:href="@{/index(pageNum=${bookslist.getPageNum()}+1)}">[[${bookslist.getPageNum()}+1]]</a></span>
+                    <span th:if="${bookslist.getPages() gt 4}"><a th:href="@{/index(pageNum=${bookslist.getPageNum()}+2)}">[[${bookslist.getPageNum()}+2]]</a></span>
+                </span>
+            <span th:if="${(bookslist.getPageNum() eq bookslist.getPages()) and bookslist.getPages() ge 4}">
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()-3})}">[[${bookslist.getPageNum()}-3]]</a>
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()}-2)}">[[${bookslist.getPageNum()}-2]]</a>
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()}-1)}">[[${bookslist.getPageNum()}-1]]</a>
+                    <span class="current"><a th:href="@{/index(pageNum=${bookslist.getPageNum()})}">[[${bookslist.getPageNum()}]]</a></span>
+                    <span th:if="${bookslist.getPages() gt 4}"><a th:href="@{/index(pageNum=${bookslist.getPageNum()}+1)}">[[${bookslist.getPageNum()}+1]]</a></span>
+                </span>
+            <span th:if="${(bookslist.getPageNum() eq bookslist.getPages()) and bookslist.getPages() ge 5}">
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()}-4)}">[[${bookslist.getPageNum()}-4]]</a>
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()-3})}">[[${bookslist.getPageNum()}-3]]</a>
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()}-2)}">[[${bookslist.getPageNum()}-2]]</a>
+                    <a th:href="@{/index(pageNum=${bookslist.getPageNum()}-1)}">[[${bookslist.getPageNum()}-1]]</a>
+                    <span class="current"><a th:href="@{/index(pageNum=${bookslist.getPageNum()})}">[[${bookslist.getPageNum()}]]</a></span>
+                </span>
+            <a th:href="@{/index(pageNum = ${bookslist.getPages()})}">尾页</a>
+            <a href="#">&gt;</a>
+        </div>
+    </div>-->
+</div>
+</body>
+</html>
