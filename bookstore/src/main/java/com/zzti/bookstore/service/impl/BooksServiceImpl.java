@@ -5,18 +5,21 @@ import com.github.pagehelper.PageHelper;
 import com.zzti.bookstore.mapper.BooksMapper;
 import com.zzti.bookstore.pojo.Books;
 import com.zzti.bookstore.service.BooksService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 @Service
 public class BooksServiceImpl implements BooksService {
-    Logger logger = LoggerFactory.getLogger(getClass());
+    //Logger logger = LoggerFactory.getLogger(getClass());
+
+
+    private BooksMapper booksMapper;
 
     @Autowired
-    private BooksMapper booksMapper;
+    public void setBooksMapper(BooksMapper booksMapper) {
+        this.booksMapper = booksMapper;
+    }
 
     /**
      * 获取总页数并返回
@@ -28,9 +31,7 @@ public class BooksServiceImpl implements BooksService {
         // 分页插件: 查询第1页，每页10行
         Page<Books> page = PageHelper.startPage(pageNum, pageSize);
         booksMapper.selectAll();
-        /**
-         * 以下是对page方法的测试
-         */
+        //以下是对page方法的测试
         // 数据表的总行数
         //logger.info("数据表总行数:"+""+page.getTotal());
         // 分页查询结果的总行数
