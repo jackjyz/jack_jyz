@@ -2,7 +2,7 @@
       static class ListNode {
           private int val;
           private ListNode next;
-          public ListNode(int x) {
+          public  ListNode(int x) {
               this.val = x;
           }
           public void setVal(int val) {
