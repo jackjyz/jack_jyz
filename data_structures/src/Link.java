@@ -1,6 +1,5 @@
 ﻿public class Link {
       static class ListNode {
-          //在这里添加一些注释
           private int val;
           private ListNode next;
           public ListNode(int x) {
