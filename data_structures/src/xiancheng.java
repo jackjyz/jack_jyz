@@ -1,6 +1,7 @@
 public class xiancheng {
 //要求：子线程运行执行10次后，主线程再运行5次。这样交替执行三遍
     public static void main(String[] args) {
+        System.out.println("该代码已上传至代码库");
         final Bussiness bussiness = new Bussiness();
         //子线程
         new Thread(new Runnable() {
