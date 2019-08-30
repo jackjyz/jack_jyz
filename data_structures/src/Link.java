@@ -1,4 +1,5 @@
-﻿public class Link {
+﻿/*
+public class Link {
       static class ListNode {
           private int val;
           private ListNode next;
@@ -17,7 +18,8 @@
           public int getVal() {
               return val;
           }
-          /*public void addListNode(ListNode listNode){
+          */
+/*public void addListNode(ListNode listNode){
               if(this.next==null){
                   this.next=listNode;
               }else{
@@ -29,9 +31,11 @@
               if(this.next!=null){
                   this.next.printListNode();
               }
-          }*/
+          }*//*
+
      }
-    /*public void add(int val){
+    */
+/*public void add(int val){
         ListNode newListNode = new ListNode(val);
         System.out.println(val);
         if(this.root==null){
@@ -44,13 +48,16 @@
         if(this.root!=null){
             this.root.printListNode();
         }
-    }*/
+    }*//*
 
-    /**
+
+    */
+/**
      * 将链表进行反转的方法
      * 需要将链表的头传入方法
      * 该方法会将反转后的链表头返回出来
-     */
+     *//*
+
    static class Solution {
         public ListNode reverseList(ListNode head) {
             if (head == null) {
@@ -68,8 +75,6 @@
             cur.next = pre;
             return cur;
         }
-
-
     }
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -104,3 +109,4 @@
 
 
 }
+*/

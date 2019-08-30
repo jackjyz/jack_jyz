@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>这是一个vue入门测试</title>
+        <script src="js/vuejs-2.5.16.js"></script>
+    </head>
+    <body>
+        <div id="app">
+           <!-- <h1>{{message}}</h1>
+            <hr>
+            {{age*age}}
+            <button v-on:click="fun1(name)">v-on按钮</button>-->
+            <input type="text" onkeydown="showKeyCode()">
+        </div>
+    </body>
+    <script>
+        function showKeyCode() {
+            var keycode = event.key;
+            alert(keycode);
+        };
+        //创建一个vue对象
+        /*new Vue({
+            //将id为app的区域交给vue管理
+            el:"#app",
+            data:{
+                message:"你好",
+                age:25,
+                name:"小"
+            },
+            methods:{
+                fun1:function (mas) {
+                    alert("hahhahha")
+                    this.message=mas;
+                }
+            }
+        });*/
+
+
+    </script>
+</html>
