@@ -11,7 +11,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
     public User findUserById(Integer id) {
-
         return userDao.findUserById(id);
     }
 }

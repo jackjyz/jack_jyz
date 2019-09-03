@@ -15,14 +15,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //该表中目前id只有1,2,3,4.
     @GetMapping("/{userId}")
     public String findUsers(Model model,@PathVariable("userId") Integer userId){
         User userById = userService.findUserById(userId);
         model.addAttribute("item",userById);
-
         return "index";
-
     }
-
-
 }
