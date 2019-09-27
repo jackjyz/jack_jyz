@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.asiainfo_select_sh.mapper.uopcrm2.Uopcrm2ShMapper">
+
+    <select id="findShByMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select  u.user_id, c.cust_name,ds.area_name,u.service_state_code,u.serial_number,n.net_type_name,s.state_name,c.cust_state,p.PSPT_TYPE
+        from tf_f_user u, tf_f_customer c,td_m_area ds,td_s_netcode n,td_s_servicestate s,td_s_passporttype p,tf_f_user_servstate us
+        <where>
+          u.cust_id = c.cust_id
+            and u.city_code=ds.area_code
+            and n.net_type_code=u.net_type_code
+            and p.PSPT_TYPE_CODE=c.PSPT_TYPE_CODE
+            and s.service_id=us.serv_id
+            and us.serv_state_code= s.state_code
+            and u.user_id= us.user_id
+            and us.end_date>sysdate
+            and u.serial_number= #{serialNumber }
+        </where>
+</select>
+
+</mapper>

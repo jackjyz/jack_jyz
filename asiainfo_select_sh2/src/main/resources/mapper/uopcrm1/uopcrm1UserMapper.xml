@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.asiainfo.asiainfo_select_sh.mapper.uopcrm1.Uopcrm1UserMapper">
+
+    <select id="findUserByMap" parameterType="java.util.Map" resultType="java.util.Map">
+        select * from tf_f_user
+        <where>
+            <if test="serialNumber !=null and serialNumber !=''">
+                serial_number= #{serialNumber }
+            </if>
+        </where>
+</select>
+
+</mapper>
